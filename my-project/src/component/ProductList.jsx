@@ -1,22 +1,43 @@
-import React from 'react'
-import {products} from "./products"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const ProductList = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get("http://127.0.0.1:8000/products");
+        setProducts(res.data);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
-    <div  className="flex flex-wrap justify-evenly gap-5">
-        {products.map((product) => (
-            <div className="shadow-lg ">
-                <img src={product.image} alt="" />
-                <div className="flex flex-wrap justify-start p-4 font-bold text-2xl">
-                    <p>{product.name}</p> 
-                    </div>
-                <div className="flex flex-wrap justify-between p-4 text-1xl"> 
-                    <p className="font-medium">{product.brand}</p>
-                    <p>{product.price}</p>
-                </div>
-            </div>
-  ))}
+    <div>
+      <div className="flex flex-wrap justify-evenly gap-2 mt-25">
+        {products.map((product, index) => (
+          <div key={index} className="w-80 shadow-xl p-8">
+            <a>
+              <img
+                src={`http://127.0.0.1:8000/${product.image}`}
+                alt="product"
+              />
+              <span className="font-bold">{product.product_name}</span>
+              <div className="flex flex-wrap justify-between text-sm">
+                <p>{product.brand}</p>
+                <p>{product.product_price}</p>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
     </div>
-  );
+  ); 
 };
-export default ProductList
+
+export default ProductList;
