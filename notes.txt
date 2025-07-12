@@ -28,3 +28,13 @@ py manage.py makemigrations = save
 deactivate = stop virtual environment
 
 railway.com
+
+*day 3*
+pip install djangorestframework-simplejwt = install package
+pip install rest_framework_simplejwt = install simplejwt
+rest_framework_simplejwt
+
+*If pip is missing for some reason, you can install it with*
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py
+

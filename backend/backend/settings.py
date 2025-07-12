@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     
     #installed apps
     'rest_framework',
-     'corsheaders',
+    'corsheaders',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +58,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 #changed
 CORS_ALLOWED_ORIGINS = [
@@ -92,9 +100,9 @@ DATABASES = {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'railway',
     'USER':  'postgres',
-    'PASSWORD':  'sooYLBxrJocduzSCQBztNbSOxhINBxLP',
-    'HOST':  'crossover.proxy.rlwy.net',
-    'PORT':  '55456',
+    'PASSWORD':  'XYpTXxyYEjUoVDDQkOJfCtzdazQGogOk',
+    'HOST':  'shortline.proxy.rlwy.net',
+    'PORT':  '55302',
     }
 }
 
