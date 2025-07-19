@@ -36,7 +36,7 @@ const Header = () => {
                     >
                       <ShoppingBagIcon
                         aria-hidden="true"
-                        className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
+                        
                       />
                     </Link>
 
