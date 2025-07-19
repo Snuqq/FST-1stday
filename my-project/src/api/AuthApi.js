@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://127.0.0.1:8000/";
+export const BASE_URL = "http://127.0.0.1:8000/";
 const LOGIN_URL = BASE_URL + "api/token/";
 const REGISTER_URL = BASE_URL + "register/";
 
@@ -10,6 +10,7 @@ export const handleLogin = async (username, password, setMessage) => {
       const response = await axios.post(LOGIN_URL, {
         username,
         password,
+        
       });
   
       setMessage("Login Successfully");

@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ShoppingBagIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { FaSpinner } from "react-icons/fa";
+import { BASE_URL } from "../api/AuthApi";
+
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -13,7 +15,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/cart/", {
+        const res = await axios.get(`${BASE_URL}cart/`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           },
@@ -39,7 +41,7 @@ const Cart = () => {
   const handleRemove = async (cart_id) => {
     try {
       const token = localStorage.getItem("access_token");
-      await axios.delete(`http://127.0.0.1:8000/cart/${cart_id}/delete/`, {
+      await axios.delete(`${BASE_URL}${cart_id}/delete/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCartItems((prev) => prev.filter((item) => item.cart_id !== cart_id));
@@ -52,7 +54,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem("access_token");
       const res = await axios.put(
-        `http://127.0.0.1:8000/cart/${cart_id}/`,
+        `${BASE_URL}${cart_id}/`,
         { qty: newQty },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -112,7 +114,7 @@ const Cart = () => {
               <img
                 src={
                   item.product.image
-                    ? `http://127.0.0.1:8000${item.product.image}`
+                    ? `${BASE_URL}${item.product.image}`
                     : "https://via.placeholder.com/100x100.png?text=No+Image"
                 }
                 alt={item.product.product_name}
