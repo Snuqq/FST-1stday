@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-i&v%djc134a8*axbt5+mpti5*2f2bj93*@jol0e3u0zu9@nm_^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -68,7 +68,7 @@ REST_FRAMEWORK = {
 #changed
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    #"http://127.0.0.1:8000",
+    "http://student3.rivanacad.com",
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -141,6 +141,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 #changed for images
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
 MEDIA_URL = '/images/'
 MEDIA_ROOT = 'static/images'
