@@ -69,6 +69,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://student3.rivanacad.com",
+    "http://localhost:3000",
 ]
 
 ROOT_URLCONF = 'backend.urls'
